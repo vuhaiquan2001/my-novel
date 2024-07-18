@@ -5,18 +5,46 @@
 :root {
   --background-primary-rgb: 255, 255, 255;
   --text-primary-rgb: 0, 0, 0;
+  --border-primary-rgb: 0, 0, 0;
+  /* Color reverse */
+  --background-reverse-rgb: 0, 0, 0;
+  --text-reverse-rgb: 255, 255, 255;
+  --border-reverse-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background-primary-rgb: 0, 0, 0;
     --text-primary-rgb: 255, 255, 255;
+    --border-primary-rgb: 255, 255, 255;
+    /* Color reverse */
+    --background-reverse-rgb: 255, 255, 255;
+    --text-reverse-rgb: 0, 0, 0;
+    --border-reverse-rgb: 0, 0, 0;
   }
 }
 
 body {
   color: rgb(var(--text-primary-rgb));
   background-color: rgb(var(--background-primary-rgb));
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px; /* Điều chỉnh cỡ chữ mặc định */
+  font-weight: 400;
+}
+h1 {
+  font-size: 32px; /* Điều chỉnh cỡ chữ cho tiêu đề h1 */
+}
+
+h2 {
+  font-size: 28px; /* Điều chỉnh cỡ chữ cho tiêu đề h2 */
+}
+
+h3 {
+  font-size: 24px; /* Điều chỉnh cỡ chữ cho tiêu đề h3 */
+}
+
+p {
+  font-size: 18px; /* Điều chỉnh cỡ chữ cho đoạn văn */
 }
 
 @layer utilities {

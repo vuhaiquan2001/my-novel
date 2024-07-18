@@ -1,9 +1,14 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { Inter } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import "@/styles/globals.css";
 
 const inter = Inter({ subsets: ["vietnamese"] });
+const cormorant_garamond = Cormorant_Garamond({
+  subsets: ["vietnamese"],
+  weight: ["300", "400", "500", "600", "700"],
+  fallback: ["Serif"],
+});
 export default async function LocaleLayout({
   children,
   params: { locale },
@@ -17,7 +22,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={inter.className}>
+      <body className={cormorant_garamond.className}>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

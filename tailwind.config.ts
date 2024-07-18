@@ -13,6 +13,22 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      borderColor: {
+        "primary-color": "rgb(var(--border-primary-rgb))",
+        "reverse-color": "rgb(var(--border-reverse-rgb))",
+      },
+      backgroundColor: {
+        "primary-color": "rgb(var(--background-primary-rgb))",
+        "reverse-color": "rgb(var(--background-reverse-rgb))",
+      },
+      colors: {
+        "primary-color": "rgb(var(--text-primary-rgb))",
+        "reverse-color": "rgb(var(--text-reverse-rgb))",
+      },
+      textColor: {
+        "primary-color": "rgb(var(--text-primary-rgb))",
+        "reverse-color": "rgb(var(--text-reverse-rgb))",
+      },
     },
   },
   plugins: [],
