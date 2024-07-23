@@ -1,0 +1,11 @@
+.ball {
+    pointer-events: none; /* Đảm bảo quả bóng không chặn các sự kiện chuột khác */
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    filter: invert(100%);
+    mix-blend-mode: difference;
+    z-index: 9999;
+    border-radius: 50%;
+}
