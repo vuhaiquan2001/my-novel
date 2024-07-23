@@ -12,7 +12,6 @@ import { DefaulMap } from "@/assets/maps";
 import { CloseIcon } from "@/assets/icons/index";
 import useDebouncedResize from "@/Helpers/Hooks/WindowResize";
 
-//
 function Page() {
   const [layer, setLayer] = useState("default");
   const [openLayer, setOpenLayer] = useState<boolean>(false);
@@ -37,8 +36,8 @@ function Page() {
         initialPositionX={0}
         initialPositionY={0}
         minScale={1}
-        maxScale={4}
-        wheel={{ smoothStep: 0.005 }}
+        maxScale={5}
+        wheel={{ smoothStep: 0.002 }}
       >
         {({ zoomIn, zoomOut, resetTransform }) => {
           // Hook for reset zoom on resize window
@@ -99,7 +98,6 @@ function Page() {
           setOpenLayer(false);
         }}
         duration={0.3}
-        fadeDuration={0.3}
         direction="bottom"
         position="bottom"
         // transition={{ type: "tween", ease: "linear" }}

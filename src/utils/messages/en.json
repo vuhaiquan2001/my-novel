@@ -5,5 +5,14 @@
   "ZOOMIN": "Zoom in",
   "ZOOMOUT": "Zoom out",
   "MAP": "Map",
-  "LAYER": "Layer"
+  "LAYER": "Layer",
+
+  "LANGUAGE": "Language",
+  "DISPLAY": "Display mode",
+
+  "DESCRIPTION": "Description",
+  "STORY": "Story",
+  "READ": "Read",
+  "FAMILY": "Family",
+  "NOBLE": "Noble"
 }

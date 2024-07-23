@@ -1,16 +1,22 @@
 "use client";
-
 import BouncingButton from "@/components/common/Buttons/BouncingButton";
 import SlideModal from "@/components/common/Popup/SlideIntoModal";
 import { Link } from "@/navigation";
 import { useTranslations } from "next-intl";
-import { CloseIcon } from "@/assets/icons/index";
+import {
+  CloseIcon,
+  DecoBottomCenterIcon,
+  DecoCornerIcon,
+  DecoCornerFillIcon,
+  StarIcon,
+} from "@/assets/icons/index";
 import { ReactNode, useEffect, useState } from "react";
 import { UrlObject } from "url";
 
 type Menu = {
   name: string | ReactNode;
   path: string | UrlObject;
+  prefetch?: boolean;
   chilren?: Menu[];
 };
 export default function Home() {
@@ -18,7 +24,7 @@ export default function Home() {
   const t = useTranslations();
   const menuItems: Menu[] = [
     { name: t("DESCRIPTION"), path: "#description" },
-    { name: t("MAP"), path: "/map" },
+    { name: t("MAP"), path: "/map", prefetch: true },
   ];
   useEffect(() => {
     const prefersDarkScheme = window.matchMedia(
@@ -32,7 +38,7 @@ export default function Home() {
     <>
       <header
         id="header"
-        className="h-fit px-2 md:px-4 flex justify-between border-b-[2px] border-primary-color"
+        className="h-fit mb-2 px-2 md:px-4 flex justify-between border-b-[2px] border-primary-color"
       >
         {/* Always display */}
         <Link
@@ -49,6 +55,7 @@ export default function Home() {
               key={index}
               href={item.path}
               className="block px-8 py-8 text-xl font-medium xl:hover:bg-reverse-color xl:hover:text-reverse-color"
+              prefetch={item?.prefetch}
             >
               {item.name}
             </Link>
@@ -98,8 +105,21 @@ export default function Home() {
       </header>
       {/* Description - Mô tả về trang web */}
       <main id="body">
-        <section id="description" className="">
-          Mô tả
+        <section
+          id="description"
+          className="m-4 flex flex-col md:flex-row md:m-8  border-2 border-primary-color border-solid shadow-bottom-right stroke-reverse-color"
+        >
+          <div className="relative flex-[2] p-5 min-h-[300px]">
+            <DecoCornerIcon className="absolute top-[-2px] left-[-2px] flip-horizontal" />
+            <div className="h-52">IMG PROFILE</div>
+          </div>
+          <div className="relative flex-[4] border-t-2 md:border-l-2 border-solid border-primary-color min-h-[300px]">
+            Mô tả
+          </div>
+          {/* <DecoCornerFillIcon className="flip-horizontal" />
+          <DecoCornerIcon />
+          <DecoBottomCenterIcon />
+          <StarIcon /> */}
         </section>
         {/*  */}
         <section id="other" className=""></section>

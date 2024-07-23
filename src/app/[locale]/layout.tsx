@@ -1,8 +1,13 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "@/styles/globals.css";
 
+export const metadata: Metadata = {
+  title: "Fantasy world",
+  description: "Thế giới thần bí.",
+};
 const inter = Inter({ subsets: ["vietnamese"] });
 const cormorant_garamond = Cormorant_Garamond({
   subsets: ["vietnamese"],

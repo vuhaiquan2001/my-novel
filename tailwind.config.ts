@@ -29,8 +29,41 @@ const config: Config = {
         "primary-color": "rgb(var(--text-primary-rgb))",
         "reverse-color": "rgb(var(--text-reverse-rgb))",
       },
+      stroke: {
+        "primary-color": "rgb(var(--text-primary-rgb))",
+        "reverse-color": "rgb(var(--text-reverse-rgb))",
+      },
+      fill: {
+        "primary-color": "rgb(var(--text-primary-rgb))",
+        "reverse-color": "rgb(var(--text-reverse-rgb))",
+      },
+
+      boxShadow: {
+        //
+        "bottom-right": "10px 10px 0px rgb(var(--border-primary-rgb))",
+        "bottom-left": "-10px 10px 0px rgb(var(--border-primary-rgb))",
+        "top-right": "10px -10px 0px rgb(var(--border-primary-rgb))",
+        "top-left": "-10px -10px 0px rgb(var(--border-primary-rgb))",
+        "right-left":
+          "10px -10px 0px rgb(var(--border-primary-rgb)), -10px 10px 0px rgb(var(--border-primary-rgb))",
+        "left-right":
+          "-10px -10px 0px rgb(var(--border-primary-rgb)), 10px 10px 0px rgb(var(--border-primary-rgb))",
+      },
     },
   },
-  plugins: [],
+  variants: { extend: {} },
+  plugins: [
+    function ({ addUtilities }: { addUtilities: any }) {
+      const newUtilities = {
+        ".flip-horizontal": {
+          transform: "scaleX(-1)",
+        },
+        ".flip-vertical": {
+          transform: "scaleY(-1)",
+        },
+      };
+      addUtilities(newUtilities, ["responsive", "hover"]);
+    },
+  ],
 };
 export default config;
