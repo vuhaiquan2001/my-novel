@@ -6,39 +6,48 @@ interface HorizontalScrollProps {
 }
 
 const HorizontalScroll: React.FC<HorizontalScrollProps> = ({ children }) => {
-  const targetRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  // Child to height
+  const [containerWidth, setContainerWidth] = useState(0);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      if (scrollRef.current) {
+        const scrollWidth = scrollRef.current.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        setContainerWidth(scrollWidth - viewportWidth);
+      }
+    };
+
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+
+    return () => window.removeEventListener("resize", updateWidth);
+  }, [children]);
+
   const { scrollYProgress } = useScroll({
-    target: targetRef,
+    target: containerRef,
+    offset: ["start start", "end end"],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-95%"]);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -containerWidth]);
 
   return (
-    // Carousel
-    <section ref={targetRef} className="h-[600vh] bg-white">
-      {/* Container */}
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        {/* horizontal translate x */}
-        <motion.div style={{ x }} className="flex">
-          <div className="h-[450px] w-screen flex-shrink-0 bg-red-500">
-            Section 1
-          </div>
-          <div className="h-[450px] w-screen flex-shrink-0 bg-blue-500">
-            Section 2
-          </div>
-          <div className="h-[450px] w-screen flex-shrink-0 bg-green-500">
-            Section 3
-          </div>
-          <div className="h-[450px] w-screen flex-shrink-0 bg-yellow-500">
-            Section 4
-          </div>
-          <div className="h-[450px] w-screen flex-shrink-0 bg-purple-500">
-            Section 5
-          </div>
+    <div
+      ref={containerRef}
+      style={{ height: `${containerWidth + window.innerHeight}px` }}
+    >
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <motion.div
+          ref={scrollRef}
+          style={{ x }}
+          className="flex whitespace-nowrap"
+        >
           {children}
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -144,7 +144,7 @@ export default function Home() {
             <DecoBottomCenterSmallIcon className="absolute 2xl:hidden bottom-[-2px] right-[50%] translate-x-[50%]" />
           </div>
         </section>
-        {/*  */}
+        {/* Other */}
         <section
           id="other"
           className="relative m-3 md:m-6 shadow-bottom-left mt-5 border-2 border-solid border-reverse-color bg-reverse-color text-6xl font-bold text-reverse-color flex flex-col justify-center items-center p-7 md:p-16"
@@ -167,15 +167,21 @@ export default function Home() {
           <DecoCornerIcon className="absolute hidden 2xl:block top-[-2px] right-[-2px]" />
           <DecoCornerSmallIcon className="absolute 2xl:hidden top-[-2px] right-[-2px] flip-horizontal" />
         </section>
-      
-      </main>
         {/* vùng Scroll ngang */}
-      <section className="overflow-hidden w-full">
+        <section className=" w-full">
           <HorizontalScroll>
-            <></>
+            <div className="w-screen h-screen flex-shrink-0 bg-red-500">
+              Section 1
+            </div>
+            <div className="w-screen h-screen flex-shrink-0 bg-blue-500">
+              Section 2
+            </div>
+            <div className="w-screen h-screen flex-shrink-0 bg-green-500">
+              Section 3
+            </div>
           </HorizontalScroll>
         </section>
-      {/* <TestComponents /> */}
+      </main>
       {/* Footer */}
       <footer id="footer" className="text-center">
         INSPIRED BY ROBOT GENTLEMAN
