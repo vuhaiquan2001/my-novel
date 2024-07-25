@@ -9,9 +9,17 @@ import {
   DecoCornerIcon,
   DecoCornerFillIcon,
   StarIcon,
+  DecoCornerSmallIcon,
+  DecoBottomCenterSmallIcon,
 } from "@/assets/icons/index";
 import { ReactNode, useEffect, useState } from "react";
 import { UrlObject } from "url";
+import TestComponents from "@/components/Test";
+import Image from "next/image";
+import { RobotImg, LogoImg } from "@/assets/images";
+import RotateAnimate from "@/components/common/Transform/Rotate";
+import { motion } from "framer-motion";
+import HorizontalScroll from "@/components/common/Scroll/HorizontalScroll";
 
 type Menu = {
   name: string | ReactNode;
@@ -36,16 +44,18 @@ export default function Home() {
 
   return (
     <>
+      {/* Header */}
       <header
         id="header"
-        className="h-fit mb-2 px-2 md:px-4 flex justify-between border-b-[2px] border-primary-color"
+        className="h-fit mb-2 px-2 md:px-4 flex items-stretch justify-between border-b-[2px] border-primary-color"
       >
         {/* Always display */}
+        {/* Chiếm hết độ cao hiện tại */}
         <Link
           href="/"
-          className="flex justify-center items-center h-full w-20 hover:bg-reverse-color hover:text-reverse-color"
+          className="flex-none flex justify-center items-center w-20 bg-reverse-color text-reverse-color"
         >
-          LOGO
+          <LogoImg className="min-h-[80px] h-full aspect-[5/4]" />
         </Link>
         {/* Tablet > */}
         <div className="menu hidden md:flex items-center">
@@ -103,28 +113,73 @@ export default function Home() {
           <p>This is the content of the modal.</p>
         </SlideModal>
       </header>
-      {/* Description - Mô tả về trang web */}
-      <main id="body">
+      {/* Body - Mô tả về trang web */}
+      <main id="body" className="h-fit w-full">
         <section
           id="description"
-          className="m-4 flex flex-col md:flex-row md:m-8  border-2 border-primary-color border-solid shadow-bottom-right stroke-reverse-color"
+          className="m-3 md:m-6 flex flex-col md:flex-row border-2 border-primary-color border-solid shadow-bottom-left stroke-reverse-color"
         >
-          <div className="relative flex-[2] p-5 min-h-[300px]">
-            <DecoCornerIcon className="absolute top-[-2px] left-[-2px] flip-horizontal" />
-            <div className="h-52">IMG PROFILE</div>
+          <div className="relative flex-[2] min-h-[300px]">
+            {/*         object-fit: contain; */}
+            <div className="absolute left-0 right-0 translate-x-0 md:translate-x-[10%] translate-y-[-15%] m-[0_auto] z-10 p-2 h-[500px] w-52 bg-slate-400">
+              IMG PROFILE
+            </div>
+            {/* <RobotIcon /> */}
+            <DecoCornerIcon className="absolute hidden 2xl:block top-[-2px] left-[-2px] flip-horizontal" />
+            <DecoCornerSmallIcon className="absolute 2xl:hidden top-[-2px] left-[-2px] " />
           </div>
-          <div className="relative flex-[4] border-t-2 md:border-l-2 border-solid border-primary-color min-h-[300px]">
-            Mô tả
+          <div className="relative z-[1000] flex-[2] lg:flex-[3] min-h-[300px] p-7 overflow-hidden border-t-2 border-l-0 border-solid border-primary-color md:border-l-2 md:border-t-0 md:p-16">
+            <div className="text-4xl md:text-5xl 2xl:text-6xl font-bold select-none">
+              SOME TITLE
+            </div>
+            <div className="text-4xl md:text-5xl 2xl:text-6xl font-bold select-none">
+              TITLE CAPTIONS
+            </div>
+            <p className="">Descriptions...</p>
+            {/* Corner Deco tablet> */}
+            <DecoCornerIcon className="absolute hidden 2xl:block top-[-2px] right-[-2px]" />
+            <DecoBottomCenterIcon className="absolute hidden 2xl:block bottom-[-2px] right-[50%] translate-x-[50%]" />
+            {/* Corner Deco tablet < */}
+            <DecoCornerSmallIcon className="absolute 2xl:hidden top-[-2px] right-[-2px] flip-horizontal" />
+            <DecoBottomCenterSmallIcon className="absolute 2xl:hidden bottom-[-2px] right-[50%] translate-x-[50%]" />
           </div>
-          {/* <DecoCornerFillIcon className="flip-horizontal" />
-          <DecoCornerIcon />
-          <DecoBottomCenterIcon />
-          <StarIcon /> */}
         </section>
         {/*  */}
-        <section id="other" className=""></section>
+        <section
+          id="other"
+          className="relative m-3 md:m-6 shadow-bottom-left mt-5 border-2 border-solid border-reverse-color bg-reverse-color text-6xl font-bold text-reverse-color flex flex-col justify-center items-center p-7 md:p-16"
+        >
+          {/* Right deco */}
+          <DecoCornerIcon className="absolute hidden 2xl:block top-[-2px] left-[-2px] flip-horizontal" />
+          <DecoCornerSmallIcon className="absolute 2xl:hidden top-[-2px] left-[-2px] " />
+          {/* Center and text */}
+          <RotateAnimate
+            className="mb-14"
+            duration={0.9}
+            rotationDegree={360}
+            inViewOptions={{ amount: 0, once: false }}
+            scaleOptions={{ scale: 1.5 }}
+          >
+            <StarIcon />
+          </RotateAnimate>
+          SOME TEXT
+          {/* Left deco */}
+          <DecoCornerIcon className="absolute hidden 2xl:block top-[-2px] right-[-2px]" />
+          <DecoCornerSmallIcon className="absolute 2xl:hidden top-[-2px] right-[-2px] flip-horizontal" />
+        </section>
+      
       </main>
-      <footer id="footer" className=""></footer>
+        {/* vùng Scroll ngang */}
+      <section className="overflow-hidden w-full">
+          <HorizontalScroll>
+            <></>
+          </HorizontalScroll>
+        </section>
+      {/* <TestComponents /> */}
+      {/* Footer */}
+      <footer id="footer" className="text-center">
+        INSPIRED BY ROBOT GENTLEMAN
+      </footer>
     </>
   );
 }

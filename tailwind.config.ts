@@ -7,6 +7,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    // Extends tailwind class
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -53,6 +54,26 @@ const config: Config = {
   },
   variants: { extend: {} },
   plugins: [
+    // Styling scrollbar
+    // function ({ addBase, theme }: { addBase: any; theme: any }) {
+    //   addBase({
+    //     "::-webkit-scrollbar": {
+    //       width: "0px",
+    //     },
+    //     "::-webkit-scrollbar-track": {
+    //       background: theme("colors.gray.100"),
+    //       borderRadius: "5px",
+    //     },
+    //     "::-webkit-scrollbar-thumb": {
+    //       background: theme("colors.gray.400"),
+    //       borderRadius: "5px",
+    //     },
+    //     "::-webkit-scrollbar-thumb:hover": {
+    //       background: theme("colors.gray.500"),
+    //     },
+    //   });
+    // },
+    // add more tailwin class
     function ({ addUtilities }: { addUtilities: any }) {
       const newUtilities = {
         ".flip-horizontal": {
@@ -60,6 +81,22 @@ const config: Config = {
         },
         ".flip-vertical": {
           transform: "scaleY(-1)",
+        },
+        ".position-horizontal-center": {
+          position: "absolute",
+          right: "50%",
+          transform: "translateX(50%)",
+        },
+        ".position-vertical-center": {
+          position: "absolute",
+          bottom: "50%",
+          transform: "translateY(50%)",
+        },
+        ".position-center": {
+          position: "absolute",
+          bottom: "50%",
+          right: "50%",
+          transform: "translate(50%, 50%)",
         },
       };
       addUtilities(newUtilities, ["responsive", "hover"]);
